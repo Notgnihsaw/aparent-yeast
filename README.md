@@ -1,4 +1,3 @@
-![alt text](https://3c1703fe8d.site.internapcdn.net/newman/csz/news/800/2017/3-aproteinthat.jpg =200x300)
 <img src="https://3c1703fe8d.site.internapcdn.net/newman/csz/news/800/2017/3-aproteinthat.jpg" width="200">
 
 # APARENT Yeast
