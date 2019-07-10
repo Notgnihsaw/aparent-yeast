@@ -77,16 +77,16 @@ class EnsemblRestClient(object):
         return None
 
     def get_region(self, species, coords):
-	seq = self.perform_rest_action(
-	   endpoint='/sequence/region/{0}/{1}'.format(species, coords),
-	   hdrs={'Content-Type' : 'text/plain'}
-	)
-	return seq
+        seq = self.perform_rest_action(
+        endpoint='/sequence/region/{0}/{1}'.format(species, coords),
+        hdrs={'Content-Type' : 'text/plain'}
+        )
+        return seq
 
 def run(species, coords):
     client = EnsemblRestClient()
     region = client.get_region(species, coords)
-    print(region)
+    return(region)
 
 #for v in variants:
  #           print('{seq_region_name}:{start}-{end}:{strand} ==> {id} ({consequence_type})'.format(**v))
