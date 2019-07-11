@@ -1,26 +1,16 @@
 #TODO: make a dict of the .txt file
-import re
+'''import re
+import csv'''
+import pandas as pd
 
-def load_file(filepath):
-    file = open(filepath, 'r')
+def to_dataFrame(filepath):
+    tsv = open(filepath, 'r')
     
-    #chrIII_101162_+	2	1	1
-    #chrIII_101242_-	1	1	1
-
-    
-    lines = file.readlines()
-    
-    return lines
+    return list(zip(*(line.strip().split('\t') for line in tsv)))
 
 
-def format_row(row, larger_file, index)
-    plussearch = re.search('[+-]', row)
-    
-    digit_start = plussearch.start() + 2
-    
-    formatted_row = [0]*4
-    
-    formatted_row[0] = row[0:digit_index-1]
-    formatted_row[1] = row[digit_index:re.search('\t', row[digit_index:]).start()]
-    formatted_row[2] = row[re.search('\t', row[digit_index:]).start()+1:]
-    
+loaded = load_tsv("DHch01_20nt_Ttrim_siteCount.txt")
+
+count_dict = {'Location':loaded[0], 'tag_count':loaded[1], 'distinct_tags':loaded[2], 'degeneracy':loaded[3]}
+
+df = pd.DataFrame(count_dict)
