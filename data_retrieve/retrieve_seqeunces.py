@@ -10,6 +10,8 @@ import location_to_query
 import seq_fetch
 import to_df 
 
+import pandas as pd
+
 def read_and_query(filename, padding, return_type = 'df'):
     count_dataframe = to_df.to_dataframe(filename)
     
@@ -31,4 +33,6 @@ def read_and_query(filename, padding, return_type = 'df'):
     
 
 yeast_df = read_and_query("SiteCounts/DHch01_20nt_Ttrim_siteCount.txt", 10, 'df')
+
+yeast_df.to_csv('yeast_df_site_count', sep='    ')
 
