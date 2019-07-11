@@ -17,22 +17,28 @@ def read_and_query(filename, padding, return_type = 'df'):
     
     query_file = open(location_to_query.to_query_file(filename, padding), 'r')
     
-    seqs = {'seq':[None]}
+    seq_list = []
     
     for query in query_file:
-        seqs['seq'].append(seq_fetch.run('saccharomyces_cerevisiae', query))
+        seq_list.append(seq_fetch.run('saccharomyces_cerevisiae', query))
+    
+    print(seq_list)
+    print(str(len(count_dataframe)) + '\n' + str(len(seq_list)))
         
-    count_dataframe['sequence'] = seqs
+    #count_dataframe = count_dataframe.append(seq_list)
+    
+    sequence_dataframe = pd.DataFrame(count_dataframe)
     
     if return_type == 'df':
         return count_dataframe
     elif return_type == 'seqs':
-        return seqs
+        return seq_list
     else:
         print("return_type invalid, please specify either df (dataframe) or seqs (sequences).")
     
 
 yeast_df = read_and_query("SiteCounts/site_count_test.txt", 10, 'df')
+
 
 yeast_df.to_csv('yeast_df_site_count', sep='    ')
 
