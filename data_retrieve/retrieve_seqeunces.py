@@ -32,7 +32,7 @@ def read_and_query(filename, padding, return_type = 'df'):
         print("return_type invalid, please specify either df (dataframe) or seqs (sequences).")
     
 
-yeast_df = read_and_query("SiteCounts/DHch01_20nt_Ttrim_siteCount.txt", 10, 'df')
+yeast_df = read_and_query("SiteCounts/site_count_test.txt", 10, 'df')
 
 yeast_df.to_csv('yeast_df_site_count', sep='    ')
 
