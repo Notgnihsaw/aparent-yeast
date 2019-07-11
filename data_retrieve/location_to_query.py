@@ -1,11 +1,10 @@
+#This file formats lines and files into a queryable format.
 
-
-
-def to_query_line(location):
+def to_query_line(location, padding):
 	
 	#region
 	loc_list = location.split('_')
-	region = ':{0}..{1}'.format(int(loc_list[1]) - 50, int(loc_list[1]) + 50)
+	region = ':{0}..{1}'.format(int(loc_list[1]) - padding, int(loc_list[1]) + padding)
 	
 	#chromosome
 	chromosome = loc_list[0].replace('chr', '')
@@ -21,14 +20,14 @@ def to_query_line(location):
 
 #TODO: go through the file line by line and make it queryable
     
-def to_query_file(file):
+def to_query_file(file, padding):
     SiteCounts = open(file)
 
     lines = SiteCounts.readlines()
     #read in the file, read its lines. 
 
     for i in range(len(lines)):
-        lines[i] = to_query_line(lines[i])
+        lines[i] = to_query_line(lines[i], padding)
         #format each line of the file.
 
     #write to the new file.
@@ -37,3 +36,7 @@ def to_query_file(file):
 
     for i in range(len(lines)):
         write_file.write(lines[i] + '\n')
+    
+    write_file.close()
+    
+    return filename
